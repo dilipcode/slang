@@ -21,6 +21,7 @@ class Coaching < ActiveRecord::Base
 
   private
       def send_coaching_invitation_email
-
+      return if self.mentor.skip_coaching_invitation_email        
+       CoachingMailer.invite(self.mentor,self).deliver_now
       end
 end

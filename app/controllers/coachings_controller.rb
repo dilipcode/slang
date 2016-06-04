@@ -8,10 +8,11 @@ class CoachingsController < ApplicationController
       @mentor = User.where(email: mentor_email).first
       if @mentor.nil?
         # Send an invitation request to mentor to join the app
-        User.invite!({email: mentor_email}, current_user) do |usr|
+        @mentor = User.invite!({email: mentor_email}, current_user) do |usr|
           usr.invited_language = @language
         end
-
+        @mentor.skip_coaching_invitation_email = true
+        create_invitation
       elsif @mentor.teaching?(@language,current_user)
         flash.now[:danger] = I18n.t 'flash_messages.coachings.already_invited'
       else
@@ -25,6 +26,11 @@ class CoachingsController < ApplicationController
   def update
     @coaching.update_attribute(:accepted, true)
     flash[:success] = I18n.t 'flash_messages.coachings.accepted_success'
+    redirect_to root_path
+  end
+
+  def destroy
+    @coaching.destroy
     redirect_to root_path
   end
 
