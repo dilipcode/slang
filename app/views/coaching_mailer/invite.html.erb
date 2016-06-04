@@ -1,0 +1,13 @@
+
+<body>
+  <h1>Welcome to <%= APP_NAME %>, <%= @user.email %></h1>
+  <p>
+    <%= @coaching.pupil.email %>
+    has requested you to mentor "<%= @coaching.language.name %>"
+    
+  </p>
+  <p>
+    To accept the request, just follow this link: <%= link_to @url, @url %>.
+  </p>
+  <p>Thanks for joining and have a great day!</p>
+</body>

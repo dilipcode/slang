@@ -16,4 +16,11 @@ class Coaching < ActiveRecord::Base
   belongs_to :mentor, class_name: User.name
   belongs_to :language
   attr_accessor :mentor_email
+
+  after_create :send_coaching_invitation_email
+
+  private
+      def send_coaching_invitation_email
+
+      end
 end

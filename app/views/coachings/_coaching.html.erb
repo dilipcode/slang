@@ -6,7 +6,7 @@
       <%= link_to "Reject", language_coaching_path(coaching.language,coaching),method: :delete, class: "btn btn-primary btn-sm" %>
     </div>
     <h4>
-    <i><%= coaching.mentor.email %></i>, you have received a mentoring request to teach <b><%= coaching.language.name %></b> to <i><%= coaching.pupil.email %>(replace with name or email)</i>
+    <i><%= coaching.mentor.email %></i>, you have received a mentoring request to teach <b><%= coaching.language.name %></b> to <i><%= coaching.pupil.email %></i>
     </h4>
     <p><%= coaching.language.description %></p>
     <p>

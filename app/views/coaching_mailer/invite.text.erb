@@ -1,0 +1,9 @@
+Welcome to <%= APP_NAME %>, <%= @user.email %>
+===============================================
+ 
+<%= @coaching.pupil.email %>
+    has requested you to mentor "<%= @coaching.language.name %>"
+ 
+To accept the request, just follow this link: <%= link_to @url, @url %>.
+ 
+Thanks for joining and have a great day!

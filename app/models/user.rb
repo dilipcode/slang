@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   # has_many :accepted_mentor_coachings, ->{ where(accepted: true)}, foreign_key: :mentor_id, class_name: Coaching.name
   has_many :pending_mentor_coachings, ->{ where(accepted: false)}, foreign_key: :mentor_id, class_name: Coaching.name
   
-
+  attr_accessor :invited_language
   def teaching?(lang,user)
     Coaching.where(language: lang, mentor: self.id, pupil: user).any?
   end
